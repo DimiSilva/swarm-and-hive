@@ -5,8 +5,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.eijproject.swarmandhive.SwarmAndHive;
-import com.eijproject.swarmandhive.entities.AreaInScreen;
-import com.eijproject.swarmandhive.utils.TextUtils;
+import com.eijproject.swarmandhive.enums.Font;
+import com.eijproject.swarmandhive.lib.AreaInScreen;
+import com.eijproject.swarmandhive.lib.TextUtils;
 
 public class LoginState extends State {
     private AreaInScreen continueArea;
@@ -17,7 +18,7 @@ public class LoginState extends State {
     }
 
     private void setupScreenAreas() {
-        continueArea = TextUtils.getTextCenterXAreaInScreen("Continuar", 48, 1, (float)300);
+        continueArea = TextUtils.getTextCenterXAreaInScreen("Continuar", Font.NORMAL, (float)300);
     }
 
     @Override
@@ -63,11 +64,11 @@ public class LoginState extends State {
     }
 
     private void renderTitle(SpriteBatch spriteBatch) {
-        TextUtils.drawTextCenterX(spriteBatch, "Swarm and Hive", 96, 1, Color.valueOf("fddb3a"), Color.valueOf("52575d"), (float)SwarmAndHive.getHeight() - 150);
+        TextUtils.drawTextCenterX(spriteBatch, "Swarm and Hive", Font.TITLE, (float)SwarmAndHive.getHeight() - 150);
     }
 
     private void renderActionButtons(SpriteBatch spriteBatch) {
-        TextUtils.drawTextCenterX(spriteBatch, "Continuar", 48, 1, Color.valueOf("fddb3a"), Color.valueOf("52575d"), (float)300);
+        TextUtils.drawTextCenterX(spriteBatch, "Continuar", Font.NORMAL, (float)300);
     }
 
     @Override

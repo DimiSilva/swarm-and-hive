@@ -5,8 +5,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.eijproject.swarmandhive.SwarmAndHive;
-import com.eijproject.swarmandhive.entities.AreaInScreen;
-import com.eijproject.swarmandhive.utils.TextUtils;
+import com.eijproject.swarmandhive.enums.Font;
+import com.eijproject.swarmandhive.lib.AreaInScreen;
+import com.eijproject.swarmandhive.lib.TextUtils;
 
 public class MainMenuState extends State {
 
@@ -20,9 +21,9 @@ public class MainMenuState extends State {
     }
 
     private void setupScreenAreas() {
-        playArea = TextUtils.getTextCenterXAreaInScreen("Jogar", 48, 1, (float) 400);
-        deckArea = TextUtils.getTextCenterXAreaInScreen("Deck", 48, 1, (float) 300);
-        exitArea = TextUtils.getTextCenterXAreaInScreen("Sair", 48, 1, (float) 200);
+        playArea = TextUtils.getTextCenterXAreaInScreen("Jogar", Font.NORMAL, (float) 400);
+        deckArea = TextUtils.getTextCenterXAreaInScreen("Deck", Font.NORMAL, (float) 300);
+        exitArea = TextUtils.getTextCenterXAreaInScreen("Sair", Font.NORMAL, (float) 200);
     }
 
 
@@ -41,7 +42,7 @@ public class MainMenuState extends State {
 
     private void playAreaTouchHandler() {
         if (playArea.checkIfInArea(Gdx.input.getX(), Gdx.input.getY()))
-            System.out.println("Jogar");
+
     }
 
     private void deckAreaTouchHandler() {
@@ -80,13 +81,13 @@ public class MainMenuState extends State {
     }
 
     private void renderTitle(SpriteBatch spriteBatch) {
-        TextUtils.drawTextCenterX(spriteBatch, "Swarm and Hive", 96, 1, Color.valueOf("fddb3a"), Color.valueOf("52575d"), (float)SwarmAndHive.getHeight() - 150);
+        TextUtils.drawTextCenterX(spriteBatch, "Swarm and Hive", Font.TITLE, (float)SwarmAndHive.getHeight() - 150);
     }
 
     private void renderActionButtons(SpriteBatch spriteBatch) {
-        TextUtils.drawTextCenterX(spriteBatch, "Jogar", 48, 1, Color.valueOf("fddb3a"), Color.valueOf("52575d"), (float) 400);
-        TextUtils.drawTextCenterX(spriteBatch, "Deck", 48, 1, Color.valueOf("fddb3a"), Color.valueOf("52575d"), (float) 300);
-        TextUtils.drawTextCenterX(spriteBatch, "Sair", 48, 1, Color.valueOf("fddb3a"), Color.valueOf("52575d"), (float) 200);
+        TextUtils.drawTextCenterX(spriteBatch, "Jogar", Font.NORMAL, (float) 400);
+        TextUtils.drawTextCenterX(spriteBatch, "Deck", Font.NORMAL, (float) 300);
+        TextUtils.drawTextCenterX(spriteBatch, "Sair", Font.NORMAL, (float) 200);
     }
 
     @Override

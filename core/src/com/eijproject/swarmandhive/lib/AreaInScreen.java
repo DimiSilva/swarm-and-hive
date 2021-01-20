@@ -1,4 +1,4 @@
-package com.eijproject.swarmandhive.entities;
+package com.eijproject.swarmandhive.lib;
 
 import com.eijproject.swarmandhive.SwarmAndHive;
 
