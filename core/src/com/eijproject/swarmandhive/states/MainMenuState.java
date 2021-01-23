@@ -8,6 +8,7 @@ import com.eijproject.swarmandhive.SwarmAndHive;
 import com.eijproject.swarmandhive.enums.Font;
 import com.eijproject.swarmandhive.lib.AreaInScreen;
 import com.eijproject.swarmandhive.lib.TextUtils;
+import com.eijproject.swarmandhive.services.CardService;
 
 public class MainMenuState extends State {
 
@@ -15,9 +16,13 @@ public class MainMenuState extends State {
     private AreaInScreen deckArea;
     private AreaInScreen exitArea;
 
-    public MainMenuState(GameStateManager gsm) {
+    private CardService cardService;
+
+    public MainMenuState(GameStateManager gsm, CardService cardService) {
         super(gsm);
         setupScreenAreas();
+
+        this.cardService = cardService;
     }
 
     private void setupScreenAreas() {
@@ -25,7 +30,6 @@ public class MainMenuState extends State {
         deckArea = TextUtils.getTextCenterXAreaInScreen("Deck", Font.NORMAL, (float) 300);
         exitArea = TextUtils.getTextCenterXAreaInScreen("Sair", Font.NORMAL, (float) 200);
     }
-
 
     @Override
     public void handleInput() {
@@ -41,13 +45,16 @@ public class MainMenuState extends State {
     }
 
     private void playAreaTouchHandler() {
-        if (playArea.checkIfInArea(Gdx.input.getX(), Gdx.input.getY()))
+        if (playArea.checkIfInArea(Gdx.input.getX(), Gdx.input.getY())) {
 
+        }
     }
 
     private void deckAreaTouchHandler() {
-        if (deckArea.checkIfInArea(Gdx.input.getX(), Gdx.input.getY()))
-            System.out.println("Deck");
+        if (deckArea.checkIfInArea(Gdx.input.getX(), Gdx.input.getY())) {
+            gsm.set(new DeckState(gsm, cardService));
+            dispose();
+        }
     }
 
     private void exitAreaTouchHandler() {
@@ -81,7 +88,7 @@ public class MainMenuState extends State {
     }
 
     private void renderTitle(SpriteBatch spriteBatch) {
-        TextUtils.drawTextCenterX(spriteBatch, "Swarm and Hive", Font.TITLE, (float)SwarmAndHive.getHeight() - 150);
+        TextUtils.drawTextCenterX(spriteBatch, "Swarm and Hive", Font.TITLE, (float) SwarmAndHive.getHeight() - 150);
     }
 
     private void renderActionButtons(SpriteBatch spriteBatch) {

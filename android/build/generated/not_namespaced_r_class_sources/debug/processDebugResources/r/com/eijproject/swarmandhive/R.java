@@ -21,4 +21,7 @@ public final class R {
   public static final class style {
     public static final int GdxTheme=0x7f040000;
   }
+  public static final class xml {
+    public static final int network_security_config=0x7f050000;
+  }
 }

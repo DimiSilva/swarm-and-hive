@@ -13,6 +13,7 @@ public class TextUtils {
     private static final FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("font.ttf"));
     private static BitmapFont titleFont = generateTitleFont();
     private static BitmapFont normalFont = generateNormalFont();
+    private static BitmapFont smallFont = generateSmallFont();
 
     public static void drawTextCenter(SpriteBatch spriteBatch, String text, Font fontType) {
         GlyphLayout layout = new GlyphLayout(getFont(fontType), text);
@@ -32,6 +33,11 @@ public class TextUtils {
     public static void drawTextXY(SpriteBatch spriteBatch, String text, Font fontType, Float x, Float y) {
         GlyphLayout layout = new GlyphLayout(getFont(fontType), text);
         drawText(spriteBatch, getFont(fontType), layout, x, y);
+    }
+
+    public static void drawTextXYCentered(SpriteBatch spriteBatch, String text, Font fontType, Float x, Float y) {
+        GlyphLayout layout = new GlyphLayout(getFont(fontType), text);
+        drawText(spriteBatch, getFont(fontType), layout, x - layout.width / 2, y - layout.height / 2);
     }
 
     private static BitmapFont generateTitleFont() {
@@ -54,6 +60,15 @@ public class TextUtils {
         return fontGenerator.generateFont(fontParameter);
     }
 
+    private static BitmapFont generateSmallFont() {
+        FreeTypeFontGenerator.FreeTypeFontParameter fontParameter;
+        fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        fontParameter.size = 32;
+        fontParameter.borderWidth = 1;
+        fontParameter.borderColor = Color.valueOf("FDDB3A");
+        fontParameter.color = Color.valueOf("52575D");
+        return fontGenerator.generateFont(fontParameter);
+    }
 
     private static void drawText(SpriteBatch spriteBatch, BitmapFont font, GlyphLayout layout, Float x, Float y) {
         font.draw(spriteBatch, layout, x, y);
@@ -103,11 +118,23 @@ public class TextUtils {
         );
     }
 
+    public static AreaInScreen getTextXYCenteredAreaInScreen(String text, Font fontType, Float x, Float y) {
+        GlyphLayout layout = new GlyphLayout(getFont(fontType), text);
+
+        return new AreaInScreen(
+                y - layout.height / 2,
+                x + layout.width / 2,
+                y + layout.height / 2,
+                x - layout.width / 2
+        );
+    }
+
     private static BitmapFont getFont(Font fontType) {
         switch (fontType.getDescription()) {
             case "title":
                 return titleFont;
-
+            case "small":
+                return smallFont;
             default:
                 return normalFont;
         }

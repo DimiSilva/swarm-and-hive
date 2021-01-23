@@ -6,5 +6,6 @@ com/eijproject/swarmandhive/R.java
  com.eijproject.swarmandhive.R$drawable
  com.eijproject.swarmandhive.R$string
  com.eijproject.swarmandhive.R$style
+ com.eijproject.swarmandhive.R$xml
 com/eijproject/swarmandhive/AndroidLauncher.java
  com.eijproject.swarmandhive.AndroidLauncher

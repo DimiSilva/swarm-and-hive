@@ -8,13 +8,17 @@ import com.eijproject.swarmandhive.SwarmAndHive;
 import com.eijproject.swarmandhive.enums.Font;
 import com.eijproject.swarmandhive.lib.AreaInScreen;
 import com.eijproject.swarmandhive.lib.TextUtils;
+import com.eijproject.swarmandhive.services.CardService;
 
 public class LoginState extends State {
     private AreaInScreen continueArea;
+    private CardService cardService;
 
-    public LoginState(GameStateManager gsm) {
+    public LoginState(GameStateManager gsm, CardService cardService) {
         super(gsm);
         setupScreenAreas();
+
+        this.cardService = cardService;
     }
 
     private void setupScreenAreas() {
@@ -34,7 +38,7 @@ public class LoginState extends State {
 
     private void continueAreaTouchHandler() {
         if(continueArea.checkIfInArea(Gdx.input.getX(), Gdx.input.getY())) {
-            gsm.set(new MainMenuState(gsm));
+            gsm.set(new MainMenuState(gsm, cardService));
             dispose();
         }
     }

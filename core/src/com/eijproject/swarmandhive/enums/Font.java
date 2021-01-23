@@ -2,7 +2,8 @@ package com.eijproject.swarmandhive.enums;
 
 public enum Font {
     TITLE(1, "title"),
-    NORMAL(2, "normal");
+    NORMAL(2, "normal"),
+    SMALL(3, "small");
 
     private int id;
     private String description;

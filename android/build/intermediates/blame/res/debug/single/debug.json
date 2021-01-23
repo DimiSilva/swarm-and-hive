@@ -12,6 +12,10 @@
         "source": "D:\\Documents\\Projects\\personal\\swarm-and-hive\\swarm-and-hive-android\\android\\res\\drawable-mdpi\\ic_launcher.png"
     },
     {
+        "merged": "D:\\Documents\\Projects\\personal\\swarm-and-hive\\swarm-and-hive-android\\android\\build\\intermediates\\res\\merged\\debug\\xml_network_security_config.xml.flat",
+        "source": "D:\\Documents\\Projects\\personal\\swarm-and-hive\\swarm-and-hive-android\\android\\res\\xml\\network_security_config.xml"
+    },
+    {
         "merged": "D:\\Documents\\Projects\\personal\\swarm-and-hive\\swarm-and-hive-android\\android\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v26_ic_launcher.xml.flat",
         "source": "D:\\Documents\\Projects\\personal\\swarm-and-hive\\swarm-and-hive-android\\android\\res\\drawable-anydpi-v26\\ic_launcher.xml"
     },
