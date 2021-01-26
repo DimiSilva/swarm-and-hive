@@ -14,6 +14,7 @@ public class TextUtils {
     private static BitmapFont titleFont = generateTitleFont();
     private static BitmapFont normalFont = generateNormalFont();
     private static BitmapFont smallFont = generateSmallFont();
+    private static BitmapFont smallsmallFont = generateSmallSmallFont();
 
     public static void drawTextCenter(SpriteBatch spriteBatch, String text, Font fontType) {
         GlyphLayout layout = new GlyphLayout(getFont(fontType), text);
@@ -45,8 +46,8 @@ public class TextUtils {
         fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         fontParameter.size = 96;
         fontParameter.borderWidth = 1;
-        fontParameter.borderColor = Color.valueOf("FDDB3A");
-        fontParameter.color = Color.valueOf("52575D");
+        fontParameter.borderColor = Color.valueOf("E3EB0D");
+        fontParameter.color = Color.valueOf("E2E9AE");
         return fontGenerator.generateFont(fontParameter);
     }
 
@@ -55,8 +56,8 @@ public class TextUtils {
         fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         fontParameter.size = 48;
         fontParameter.borderWidth = 1;
-        fontParameter.borderColor = Color.valueOf("FDDB3A");
-        fontParameter.color = Color.valueOf("52575D");
+        fontParameter.borderColor = Color.valueOf("E3EB0D");
+        fontParameter.color = Color.valueOf("E2E9AE");
         return fontGenerator.generateFont(fontParameter);
     }
 
@@ -65,10 +66,21 @@ public class TextUtils {
         fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         fontParameter.size = 32;
         fontParameter.borderWidth = 1;
-        fontParameter.borderColor = Color.valueOf("FDDB3A");
-        fontParameter.color = Color.valueOf("52575D");
+        fontParameter.borderColor = Color.valueOf("E3EB0D");
+        fontParameter.color = Color.valueOf("E2E9AE");
         return fontGenerator.generateFont(fontParameter);
     }
+
+    private static BitmapFont generateSmallSmallFont() {
+        FreeTypeFontGenerator.FreeTypeFontParameter fontParameter;
+        fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        fontParameter.size = 14;
+        fontParameter.borderWidth = 1;
+        fontParameter.borderColor = Color.valueOf("E3EB0D");
+        fontParameter.color = Color.valueOf("E2E9AE");
+        return fontGenerator.generateFont(fontParameter);
+    }
+
 
     private static void drawText(SpriteBatch spriteBatch, BitmapFont font, GlyphLayout layout, Float x, Float y) {
         font.draw(spriteBatch, layout, x, y);
@@ -135,6 +147,8 @@ public class TextUtils {
                 return titleFont;
             case "small":
                 return smallFont;
+            case "smallsmall":
+                return smallsmallFont;
             default:
                 return normalFont;
         }

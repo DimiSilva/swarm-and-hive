@@ -1,11 +1,18 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Documents\\Projects\\personal\\swarm-and-hive\\swarm-and-hive-android\\android\\build\\intermediates\\res\\merged\\debug\\values_values.arsc.flat",
+            "outputFile": "D:\\IFSP\\2020\\swarm-and-hive\\android\\build\\intermediates\\res\\merged\\debug\\values_values.arsc.flat",
             "map": [
                 {
-                    "source": "D:\\Documents\\Projects\\personal\\swarm-and-hive\\swarm-and-hive-android\\android\\res\\values\\color.xml",
+                    "source": "D:\\IFSP\\2020\\swarm-and-hive\\android\\res\\values\\color.xml",
                     "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endColumns": "55",
+                        "endOffsets": "108"
+                    },
+                    "to": {
                         "startLines": "2",
                         "startColumns": "4",
                         "startOffsets": "55",
@@ -14,13 +21,13 @@
                     }
                 },
                 {
-                    "source": "D:\\Documents\\Projects\\personal\\swarm-and-hive\\swarm-and-hive-android\\android\\res\\values\\strings.xml",
+                    "source": "D:\\IFSP\\2020\\swarm-and-hive\\android\\res\\values\\strings.xml",
                     "from": {
                         "startLines": "3",
                         "startColumns": "4",
-                        "startOffsets": "56",
+                        "startOffsets": "59",
                         "endColumns": "51",
-                        "endOffsets": "103"
+                        "endOffsets": "106"
                     },
                     "to": {
                         "startLines": "3",
@@ -31,14 +38,14 @@
                     }
                 },
                 {
-                    "source": "D:\\Documents\\Projects\\personal\\swarm-and-hive\\swarm-and-hive-android\\android\\res\\values\\styles.xml",
+                    "source": "D:\\IFSP\\2020\\swarm-and-hive\\android\\res\\values\\styles.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
-                        "startOffsets": "17",
+                        "startOffsets": "19",
                         "endLines": "9",
                         "endColumns": "12",
-                        "endOffsets": "475"
+                        "endOffsets": "484"
                     },
                     "to": {
                         "startLines": "4",
