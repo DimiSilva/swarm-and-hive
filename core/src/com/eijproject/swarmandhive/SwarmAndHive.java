@@ -27,10 +27,6 @@ public class SwarmAndHive extends ApplicationAdapter {
 	private ShapeRenderer shapeRenderer;
 	private static String token;
 
-	private CardService cardService;
-	private StageService stageService;
-	private AuthService authService;
-
 	@Override
 	public void create () {
 		spriteBatch = new SpriteBatch();
@@ -42,10 +38,7 @@ public class SwarmAndHive extends ApplicationAdapter {
 
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 
-		cardService = new CardService();
-		authService = new AuthService();
-
-		gsm.push(new LoginState(gsm, cardService, authService));
+		gsm.push(new LoginState(gsm));
 	}
 
 	@Override

@@ -6,28 +6,39 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.eijproject.swarmandhive.SwarmAndHive;
 import com.eijproject.swarmandhive.entities.Card;
+import com.eijproject.swarmandhive.entities.Enemy;
 import com.eijproject.swarmandhive.entities.Stage;
+import com.eijproject.swarmandhive.entities.Wave;
 import com.eijproject.swarmandhive.enums.Font;
 import com.eijproject.swarmandhive.lib.AreaInScreen;
 import com.eijproject.swarmandhive.lib.TextUtils;
 import com.eijproject.swarmandhive.services.CardService;
+import com.eijproject.swarmandhive.services.Services;
 import com.eijproject.swarmandhive.services.StageService;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class StagesState extends State {
 
-    private CardService cardService;
-    private StageService stageService;
     private AreaInScreen backArea;
-    private ArrayList<Stage> stages;
+    private List<Stage> stages;
 
-    public StagesState(GameStateManager gsm, CardService cardService, StageService stageService) {
+    public StagesState(GameStateManager gsm) {
         super(gsm);
         setupScreenAreas();
-        this.cardService = cardService;
-        this.stageService = stageService;
-        stages = this.stageService.getAll();
+        stages = Services.getInstance().getStages();
+        for(Stage stage: stages) {
+            System.out.println(stage.getName());
+
+            for(Wave wave: stage.getWaves()) {
+                System.out.println(wave.getId());
+
+                for(Enemy enemy: wave.getEnemies()) {
+                    System.out.println(enemy.getName());
+                }
+            }
+        }
     }
 
     private void setupScreenAreas() {
@@ -47,7 +58,7 @@ public class StagesState extends State {
 
     private void backAreaTouchHandler() {
         if (backArea.checkIfInArea(Gdx.input.getX(), Gdx.input.getY())) {
-            gsm.set(new MainMenuState(gsm, cardService));
+            gsm.set(new MainMenuState(gsm));
             dispose();
         }
     }
@@ -62,18 +73,15 @@ public class StagesState extends State {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
 
         renderBackground(shapeRenderer);
-        renderDeckCards(spriteBatch, shapeRenderer);
 
         shapeRenderer.end();
 
         spriteBatch.begin();
 
-        renderIdentifiers(spriteBatch);
         renderActionButtons(spriteBatch);
 
         spriteBatch.end();
     }
-
 
     private void renderBackground(ShapeRenderer shapeRenderer) {
         shapeRenderer.setColor(Color.valueOf("41444B"));
@@ -82,21 +90,8 @@ public class StagesState extends State {
         shapeRenderer.rect(SwarmAndHive.getWidth() / 2, 0, SwarmAndHive.getWidth() / 2, SwarmAndHive.getHeight());
     }
 
-
-    private void renderIdentifiers(SpriteBatch spriteBatch) {
-        TextUtils.drawTextXYCentered(spriteBatch, "Deck", Font.NORMAL, (float) SwarmAndHive.getWidth() / 4, (float) SwarmAndHive.getHeight() - 100);
-        TextUtils.drawTextXYCentered(spriteBatch, "Cartas", Font.NORMAL, (float) SwarmAndHive.getWidth() / 2 + SwarmAndHive.getWidth() / 4,(float) SwarmAndHive.getHeight() - 100);
-    }
-
     private void renderActionButtons(SpriteBatch spriteBatch) {
         TextUtils.drawTextXYCentered(spriteBatch, "Voltar", Font.SMALL, (float) SwarmAndHive.getWidth() / 12, (float) SwarmAndHive.getHeight() - 50);
-    }
-
-    private void renderDeckCards(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
-        for(int i = 0; i < deckCards.size(); i++) {
-            shapeRenderer.setColor(Color.valueOf("FDDB3A"));
-            shapeRenderer.rect(100 * (i + 1), (float) SwarmAndHive.getHeight() - 250, 50, 50);
-        }
     }
 
     @Override

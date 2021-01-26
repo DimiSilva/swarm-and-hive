@@ -11,20 +11,20 @@ import com.eijproject.swarmandhive.enums.Font;
 import com.eijproject.swarmandhive.lib.AreaInScreen;
 import com.eijproject.swarmandhive.lib.TextUtils;
 import com.eijproject.swarmandhive.services.CardService;
+import com.eijproject.swarmandhive.services.Services;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DeckState extends State {
 
-    private CardService cardService;
     private AreaInScreen backArea;
-    private ArrayList<Card> deckCards;
+    private List<Card> deckCards;
 
-    public DeckState(GameStateManager gsm, CardService cardService) {
+    public DeckState(GameStateManager gsm) {
         super(gsm);
         setupScreenAreas();
-        this.cardService = cardService;
-        deckCards = this.cardService.getDeckCards();
+        deckCards = Services.getInstance().getDeckCards();
     }
 
     private void setupScreenAreas() {
@@ -44,7 +44,7 @@ public class DeckState extends State {
 
     private void backAreaTouchHandler() {
         if (backArea.checkIfInArea(Gdx.input.getX(), Gdx.input.getY())) {
-            gsm.set(new MainMenuState(gsm, cardService));
+            gsm.set(new MainMenuState(gsm));
             dispose();
         }
     }

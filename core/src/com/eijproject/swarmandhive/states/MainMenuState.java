@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.eijproject.swarmandhive.SwarmAndHive;
+import com.eijproject.swarmandhive.entities.Stage;
 import com.eijproject.swarmandhive.enums.Font;
 import com.eijproject.swarmandhive.lib.AreaInScreen;
 import com.eijproject.swarmandhive.lib.TextUtils;
@@ -16,14 +17,10 @@ public class MainMenuState extends State {
     private AreaInScreen deckArea;
     private AreaInScreen exitArea;
 
-    private CardService cardService;
-
-    public MainMenuState(GameStateManager gsm, CardService cardService) {
+    public MainMenuState(GameStateManager gsm) {
         super(gsm);
 
         setupScreenAreas();
-
-        this.cardService = cardService;
     }
 
     private void setupScreenAreas() {
@@ -47,20 +44,21 @@ public class MainMenuState extends State {
 
     private void playAreaTouchHandler() {
         if (playArea.checkIfInArea(Gdx.input.getX(), Gdx.input.getY())) {
-
+            gsm.set(new StagesState(gsm));
+            dispose();
         }
     }
 
     private void deckAreaTouchHandler() {
         if (deckArea.checkIfInArea(Gdx.input.getX(), Gdx.input.getY())) {
-            gsm.set(new DeckState(gsm, cardService));
+            gsm.set(new DeckState(gsm));
             dispose();
         }
     }
 
     private void exitAreaTouchHandler() {
         if (exitArea.checkIfInArea(Gdx.input.getX(), Gdx.input.getY()))
-            System.out.println("Sair");
+            Gdx.app.exit();
     }
 
     @Override

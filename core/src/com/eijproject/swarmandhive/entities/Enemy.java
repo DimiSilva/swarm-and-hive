@@ -44,17 +44,13 @@ public class Enemy {
     }
 
     public static Enemy fromJson(JsonValue json) {
-//        return new Enemy(
-//                json.getLong("id"),
-//                json.getString("name"),
-//                json.getString("description"),
-//                json.getString("type"),
-//                !json.get("attack").isNull() ? json.getFloat("attack"): null ,
-//                !json.get("defense").isNull() ? json.getFloat("defense") : null,
-//                !json.get("speed").isNull() ? json.getFloat("speed") : null,
-//                !json.get("attackModifier").isNull() ? json.getFloat("attackModifier"): null ,
-//                !json.get("defenseModifier").isNull() ? json.getFloat("defenseModifier") : null,
-//                !json.get("speedModifier").isNull() ? json.getFloat("speedModifier") : null
-//        );
+        return new Enemy(
+                json.getLong("id"),
+                json.getString("name"),
+                json.getFloat("attack"),
+                json.getFloat("defense"),
+                json.getFloat("speed"),
+                json.getFloat("honeyReward")
+        );
     }
 }

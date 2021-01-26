@@ -15,20 +15,19 @@ import com.eijproject.swarmandhive.lib.AreaInScreen;
 import com.eijproject.swarmandhive.lib.TextUtils;
 import com.eijproject.swarmandhive.services.AuthService;
 import com.eijproject.swarmandhive.services.CardService;
+import com.eijproject.swarmandhive.services.Services;
 
 
 public class RegisterState extends State {
     private AreaInScreen btnRegister;
     private AreaInScreen btnBack;
-    private CardService cardService;
-    private AuthService authService;
 
     private Stage stage;
     private TextField emailInput;
     private TextField usernameInput;
     private TextField passwordInput;
 
-    public RegisterState(GameStateManager gsm, CardService cardService, AuthService authService) {
+    public RegisterState(GameStateManager gsm) {
         super(gsm);
         setupScreenAreas();
 
@@ -36,8 +35,6 @@ public class RegisterState extends State {
         Gdx.input.setInputProcessor(stage);
 
         setupInputs();
-        this.cardService = cardService;
-        this.authService = authService;
     }
 
     private void setupScreenAreas() {
@@ -58,13 +55,13 @@ public class RegisterState extends State {
 
     private void buttonsTouchHandler() {
         if(btnRegister.checkIfInArea(Gdx.input.getX(), Gdx.input.getY())) {
-            authService.register(emailInput.getText(), usernameInput.getText(), passwordInput.getText());
+            Services.getInstance().register(emailInput.getText(), usernameInput.getText(), passwordInput.getText());
             if(SwarmAndHive.getToken() != null && SwarmAndHive.getToken() != ""  ){
-                  gsm.set(new LoginState(gsm, cardService, authService));
+                  gsm.set(new LoginState(gsm));
             }
             dispose();
         }else if(btnBack.checkIfInArea(Gdx.input.getX(), Gdx.input.getY())) {
-            gsm.set(new LoginState(gsm, cardService, authService));
+            gsm.set(new LoginState(gsm));
             dispose();
         }
     }
