@@ -9,12 +9,13 @@ import com.eijproject.swarmandhive.enums.Font;
 import com.eijproject.swarmandhive.lib.AreaInScreen;
 import com.eijproject.swarmandhive.lib.TextUtils;
 import com.eijproject.swarmandhive.services.CardService;
+import com.eijproject.swarmandhive.services.StageService;
 
 public class LoginState extends State {
     private AreaInScreen continueArea;
     private CardService cardService;
 
-    public LoginState(GameStateManager gsm, CardService cardService) {
+    public LoginState(GameStateManager gsm, CardService cardService, StageService stageService) {
         super(gsm);
         setupScreenAreas();
 

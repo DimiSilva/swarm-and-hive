@@ -5,7 +5,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.eijproject.swarmandhive.entities.Stage;
 import com.eijproject.swarmandhive.services.CardService;
+import com.eijproject.swarmandhive.services.StageService;
 import com.eijproject.swarmandhive.states.GameStateManager;
 import com.eijproject.swarmandhive.states.LoginState;
 
@@ -21,6 +23,7 @@ public class SwarmAndHive extends ApplicationAdapter {
 	private ShapeRenderer shapeRenderer;
 
 	private CardService cardService;
+	private StageService stageService;
 
 	@Override
 	public void create () {
