@@ -18,10 +18,11 @@ public class CardService {
 
         Net.HttpRequest httpGet = new Net.HttpRequest(Net.HttpMethods.GET);
         httpGet.setUrl(SwarmAndHive.apiUrl + endpoint + "/deck-cards");
-        httpGet.setHeader("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqbm4uc2xhQGdtYWlsLmNvbSIsImV4cCI6MTkyNjY0MDE5NH0.NhRC90BY3kpkX4Zh2xUt-jmaHMfK5tCATOtuGUpDqzLHE2Dly_yGpN-5CBbj7vB-CEAkiKxIcBafUw9gfMFADQ");
-
+        httpGet.setHeader("Authorization", SwarmAndHive.getToken());
+        System.out.println("token: " + SwarmAndHive.getToken());
         waitingResponse = true;
 
+        SwarmAndHive.setLoading(1);
         Gdx.net.sendHttpRequest(httpGet, new Net.HttpResponseListener() {
             @Override
             public void handleHttpResponse(Net.HttpResponse httpResponse) {
@@ -32,18 +33,21 @@ public class CardService {
                     cards.add(Card.fromJson(jsonCard));
                 }
                 waitingResponse = false;
+                SwarmAndHive.setLoading(-1);
             }
 
             @Override
             public void failed(Throwable t) {
                 System.out.println(t.getMessage());
                 waitingResponse = false;
+                SwarmAndHive.setLoading(-1);
             }
 
             @Override
             public void cancelled() {
                 System.out.println("cancelled");
                 waitingResponse = false;
+                SwarmAndHive.setLoading(-1);
             }
         });
         try {
@@ -52,6 +56,7 @@ public class CardService {
         } catch (InterruptedException error) {
             System.out.println(error.getMessage());
         }
+        System.out.println(cards.toString());
         return cards;
     }
 }

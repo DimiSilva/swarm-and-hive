@@ -20,6 +20,7 @@ public class MainMenuState extends State {
 
     public MainMenuState(GameStateManager gsm, CardService cardService) {
         super(gsm);
+
         setupScreenAreas();
 
         this.cardService = cardService;
@@ -72,10 +73,8 @@ public class MainMenuState extends State {
         renderBackground(shapeRenderer);
 
         spriteBatch.begin();
-
         renderTitle(spriteBatch);
         renderActionButtons(spriteBatch);
-
         spriteBatch.end();
     }
 

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.utils.JsonReader;
 import com.eijproject.swarmandhive.SwarmAndHive;
 import com.eijproject.swarmandhive.entities.Card;
 import com.eijproject.swarmandhive.enums.Font;
@@ -91,7 +92,15 @@ public class DeckState extends State {
     private void renderDeckCards(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer) {
         for(int i = 0; i < deckCards.size(); i++) {
             shapeRenderer.setColor(Color.valueOf("FDDB3A"));
-            shapeRenderer.rect(100 * (i + 1), (float) SwarmAndHive.getHeight() - 250, 50, 50);
+            int maxSize = (SwarmAndHive.getWidth() / 2) / 250;
+
+            if((250 * i) + 250 < (SwarmAndHive.getWidth() / 2)){
+                shapeRenderer.rect((250 * i) + 50, (float) SwarmAndHive.getHeight() - 500, 200, 200);
+
+            }else{
+                shapeRenderer.rect((250 * (i % maxSize)) + 50, (float) SwarmAndHive.getHeight() - 740, 200, 200);
+            }
+            System.out.println(deckCards.get(i).getName());
         }
     }
 
